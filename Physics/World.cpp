@@ -1,5 +1,5 @@
 #include "World.h"
-#include "Box2d.h"
+#include "box2d/box2d.h"
 #include "Settings.h"
 
 namespace Physics

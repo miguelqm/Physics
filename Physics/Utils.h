@@ -1,7 +1,7 @@
 #pragma once
 
 #include "SFML\Graphics.hpp"
-#include "box2d.h"
+#include "box2d/box2d.h"
 
 float FloatB2ToSF(float f);
 float FloatSFToB2(float f);
