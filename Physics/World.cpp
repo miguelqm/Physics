@@ -57,13 +57,13 @@ namespace Physics
 		b2dScreenBorderBody->DestroyFixture(b2dScreenBorderBody->GetFixtureList());
 
 		b2EdgeShape screenBorderShape;
-		screenBorderShape.Set(lowerLeftCorner, lowerRightCorner);
+		screenBorderShape.SetTwoSided(lowerLeftCorner, lowerRightCorner);
 		b2dScreenBorderBody->CreateFixture(&screenBorderShape, 0);
-		screenBorderShape.Set(lowerRightCorner, upperRightCorner);
+		screenBorderShape.SetTwoSided(lowerRightCorner, upperRightCorner);
 		b2dScreenBorderBody->CreateFixture(&screenBorderShape, 0);
-		screenBorderShape.Set(upperRightCorner, upperLeftCorner);
+		screenBorderShape.SetTwoSided(upperRightCorner, upperLeftCorner);
 		b2dScreenBorderBody->CreateFixture(&screenBorderShape, 0);
-		screenBorderShape.Set(upperLeftCorner, lowerLeftCorner);
+		screenBorderShape.SetTwoSided(upperLeftCorner, lowerLeftCorner);
 		b2dScreenBorderBody->CreateFixture(&screenBorderShape, 0);
 	}
 

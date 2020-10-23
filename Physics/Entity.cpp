@@ -10,7 +10,9 @@ namespace Physics
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
 		bodyDef.position.Set(x, y);
-		bodyDef.angle = angle * b2_pi;
+		bodyDef.angle = angle * b2_pi/180.0F;
+		bodyDef.userData.pointer = (uintptr_t)this;
+
 		body = world->CreateBody(&bodyDef);
 		//body->SetBullet(true);
 		//body->SetLinearDamping(0.001);
@@ -25,8 +27,6 @@ namespace Physics
 		
 
 		body->CreateFixture(&fixtureDef);
-
-		body->SetUserData(this);
 	}
 
 	void Entity::Destroy()

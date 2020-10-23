@@ -7,6 +7,6 @@ namespace Physics
 		dragCoeficient = 0.05f;
 
 		shape = new b2ChainShape();
-		((b2ChainShape*)shape)->CreateChain(dimensions, count);
+		((b2ChainShape*)shape)->CreateChain(dimensions, count, dimensions[0], dimensions[0]);
 	}
 }

@@ -109,7 +109,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Code\CPP\Libraries\SFML\lib\Debug;D:\Code\CPP\Libraries\box2d\build\src\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Code\CPP\Libraries\SFML\lib\Debug;D:\Code\CPP\Libraries\box2d\bin\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>box2d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

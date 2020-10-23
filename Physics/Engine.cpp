@@ -101,13 +101,13 @@ void Engine::CreateWorld(HWND hWnd)
 
 	CreateObject<PhysPolygon>(myWorld, 3, 3, vertices, 8, 0.12f, 0.002);
 
-	x = 0.0f;
+	x = 100.0f;
 	float y = 0.0f;
 	for (int i = 0; i < 1000; ++i)
 	{
 		y = 5+sin(x) - x/9;
 		vertices[i].Set(x, y);
-		x += 0.1f;
+		x -= 0.1f;
 	}
 	//vertices[0].Set(0.0f, 0.0f);
 	//vertices[1].Set(1.0f, 1.0f);
@@ -321,7 +321,7 @@ void Engine::Drag()
 		if (body->GetType() == b2BodyType::b2_dynamicBody)
 		{
 			bool a = body->IsAwake();
-			Entity* obj = (Entity*)body->GetUserData();
+			Entity* obj = (Entity*)body->GetUserData().pointer;
 			obj->ApplyDrag();
 		}
 	}
@@ -402,7 +402,6 @@ void Engine::CreateNewSpringBall(int xPos, int yPos)
 
 	body = CreateObject<Circle>(myWorld, xPos / PTM_RATIO, ((y * 2) - yPos) / PTM_RATIO, &b2Vec2(0.05, 0.05), 1, 0, 0.8)->body;
 	body->SetBullet(DEF_BULLET);
-	body->SetUserData(lastSpringBody);
 
 	if (lastSpringBody != nullptr)
 	{
@@ -410,7 +409,7 @@ void Engine::CreateNewSpringBall(int xPos, int yPos)
 		jointDef.Initialize(body, lastSpringBody, body->GetWorldCenter(), lastSpringBody->GetWorldCenter());
 		jointDef.collideConnected = true;
 		//jointDef.frequencyHz = 24.0f;
-		jointDef.dampingRatio = 1.0f;
+		jointDef.damping = 1.0f;
 		myWorld->CreateJoint(&jointDef);
 	}
 	lastSpringBody = body;

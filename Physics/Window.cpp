@@ -119,6 +119,8 @@ namespace Rendering
 		b2Fixture* fixture = body->GetFixtureList();
 		b2ChainShape* shape = (b2ChainShape*)fixture->GetShape();
 
+		float angle = body->GetAngle() * 180.0f / b2_pi;
+
 		sf::VertexArray line(sf::PrimitiveType::LinesStrip, shape->m_count);
 		for (int i = 0; i < shape->m_count; ++i)
 		{
