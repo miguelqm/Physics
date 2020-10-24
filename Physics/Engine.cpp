@@ -190,6 +190,8 @@ void Engine::MouseEvent(UINT message, WPARAM wParam, LPARAM lParam)
 	AABBCallback cb;
 	b2AABB box;
 	float msClickElapsed;
+	sf::View v;
+	float delta;
 
 	switch (message)
 	{
@@ -206,6 +208,12 @@ void Engine::MouseEvent(UINT message, WPARAM wParam, LPARAM lParam)
 		point = (ptMouseClickEnd - ptMouseClickStart);
 		point *= 1/msClickElapsed;
 		myWorld->ApplyForceToAll(point);
+		break;
+	case WM_MOUSEWHEEL:
+		delta = GET_WHEEL_DELTA_WPARAM(wParam) > 0 ? 0.9 : 1.1;
+		v = myWindow->getView();
+		v.zoom(delta);
+		myWindow->setView(v);
 		break;
 	default:
 		break;
@@ -268,12 +276,12 @@ LRESULT Engine::ProcessMsgs(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 			break;
 		case VK_RIGHT:
 			v = myWindow->getView();
-			v.move(10, 0);
+			v.move(20, 0);
 			myWindow->setView(v);
 			break;
 		case VK_UP:
 			v = myWindow->getView();
-			v.move(0, 10);
+			v.move(0, 20);
 			myWindow->setView(v);
 			break;
 		case VK_DOWN:
@@ -300,6 +308,7 @@ LRESULT Engine::ProcessMsgs(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 	case WM_RBUTTONDOWN:
 	case WM_RBUTTONUP:
 	case WM_MOUSEMOVE:
+	case WM_MOUSEWHEEL:
 		MouseEvent(message, wParam, lParam);
         break;
 	case WM_SIZE:
