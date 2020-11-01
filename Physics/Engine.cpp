@@ -286,12 +286,12 @@ LRESULT Engine::ProcessMsgs(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 			break;
 		case VK_DOWN:
 			v = myWindow->getView();
-			v.move(0, -10);
+			v.move(0, -20);
 			myWindow->setView(v);
 			break;
 		case VK_LEFT:
 			v = myWindow->getView();
-			v.move(-10, 0);
+			v.move(-20, 0);
 			myWindow->setView(v);
 		break; 
 		case 'Q':
